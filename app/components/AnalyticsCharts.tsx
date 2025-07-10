@@ -16,6 +16,11 @@ import {
 } from 'chart.js';
 import { Bar, Doughnut, Line } from 'react-chartjs-2';
 
+// Interface pour MathJax
+interface MathJaxType {
+  typesetPromise: () => Promise<void>;
+}
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -32,8 +37,11 @@ ChartJS.register(
 const AnalyticsCharts = () => {
   // Hook pour déclencher le rendu MathJax
   useEffect(() => {
-    if (typeof window !== 'undefined' && (window as any).MathJax) {
-      (window as any).MathJax.typesetPromise();
+    if (typeof window !== 'undefined') {
+      const mathJax = (window as unknown as { MathJax?: MathJaxType }).MathJax;
+      if (mathJax?.typesetPromise) {
+        mathJax.typesetPromise();
+      }
     }
   }, []);
 
