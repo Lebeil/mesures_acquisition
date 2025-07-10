@@ -442,6 +442,16 @@ h4 {
   transform: translateY(-1px);
 }
 
+/* Formula styles */
+.formula {
+  font-size: 1.1rem; /* Increased font size for better readability */
+  font-weight: 600; /* Slightly bolder */
+  color: #1e293b; /* slate-900 for better contrast */
+  margin-top: 1rem; /* More spacing above */
+  margin-bottom: 1rem; /* More spacing below */
+  text-align: center;
+}
+
 /* Recommendation cards */
 .recommendations-container {
   display: flex;

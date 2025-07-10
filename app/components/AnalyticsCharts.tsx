@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -29,6 +30,13 @@ ChartJS.register(
 );
 
 const AnalyticsCharts = () => {
+  // Hook pour déclencher le rendu MathJax
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).MathJax) {
+      (window as any).MathJax.typesetPromise();
+    }
+  }, []);
+
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -149,6 +157,9 @@ const AnalyticsCharts = () => {
         <p className="description">
           Mesure la capacité à attirer de nouveaux clients, essentielle pour un modèle basé sur le projet.
         </p>
+        <div className="formula">
+          {`$$\\text{Formule} : \\frac{\\text{Nouveaux Clients}}{\\text{Prospects Engagés}} \\times 100$$`}
+        </div>
       </div>
 
       <div className="kpi-card">
@@ -159,6 +170,9 @@ const AnalyticsCharts = () => {
         <p className="description">
           Valide la promesse des &quot;Stop-scrollers&quot; en mesurant l&apos;interaction du public.
         </p>
+        <div className="formula">
+          {`$$\\text{Formule} : \\frac{\\text{Engagements Totaux}}{\\text{Portée ou Impressions Totales}} \\times 100$$`}
+        </div>
       </div>
 
       <div className="kpi-card">
@@ -169,6 +183,9 @@ const AnalyticsCharts = () => {
         <p className="description">
           Indique la satisfaction client et la stabilité des revenus à long terme.
         </p>
+        <div className="formula">
+          {`$$\\text{Formule} : \\frac{\\text{Clients Fin Période} - \\text{Nouveaux Clients}}{\\text{Clients Début Période}} \\times 100$$`}
+        </div>
       </div>
 
       <div className="kpi-card">
@@ -179,6 +196,9 @@ const AnalyticsCharts = () => {
         <p className="description">
           Crucial pour la santé financière, identifie les missions les plus lucratives.
         </p>
+        <div className="formula">
+          {`$$\\text{Formule} : \\frac{\\text{Revenu Projet} - \\text{Coûts Totaux Projet}}{\\text{Revenu Projet}} \\times 100$$`}
+        </div>
       </div>
     </div>
   );
