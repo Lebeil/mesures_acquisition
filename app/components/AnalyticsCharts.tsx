@@ -77,6 +77,20 @@ const AnalyticsCharts = () => {
     }
   };
 
+  // Options spécifiques pour le graphique en ligne CPC
+  const lineChartOptions = {
+    ...chartOptions,
+    elements: {
+      line: {
+        tension: 0.3
+      },
+      point: {
+        radius: 4,
+        hoverRadius: 6
+      }
+    }
+  };
+
   const cpmData = {
     labels: ['T1 2024', 'T2 2024', 'T3 2024', 'T4 2024 (P)'],
     datasets: [{
@@ -96,6 +110,10 @@ const AnalyticsCharts = () => {
       fill: true,
       backgroundColor: 'rgba(59, 130, 246, 0.1)',
       borderColor: 'rgba(59, 130, 246, 1)',
+      borderWidth: 2,
+      pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 2,
       tension: 0.3
     }]
   };
@@ -133,20 +151,20 @@ const AnalyticsCharts = () => {
           Mesure le coût pour 1000 impressions de vos annonces. Essentiel pour évaluer l&apos;efficacité des campagnes de notoriété.
         </p>
         <div className="formula">
-          {`$$ \\text{CPM} = \\frac{800\\euro}{\\text{100000 Impressions}} \\times 1000 = 8\\euro $$`}
+          {`$$ \\text{CPM} = \\frac{800€}{\\text{100000 Impressions}} \\times 1000 = 8€ $$`}
         </div>
       </div>
 
       <div className="kpi-card">
         <h3>2. CPC (Coût Par Clic)</h3>
         <div className="chart-container">
-          <Line data={cpcData} options={chartOptions} />
+          <Line data={cpcData} options={lineChartOptions} />
         </div>
         <p className="description">
           Indique le coût moyen pour chaque clic sur vos annonces. Crucial pour les campagnes axées sur le trafic.
         </p>
         <div className="formula">
-          {`$$ \\text{CPC} = \\frac{80\\euro}{\\text{100 Clics}} = 0.80\\euro $$`}
+          {`$$ \\text{CPC} = \\frac{80€}{\\text{100 Clics}} = 0.80€ $$`}
         </div>
       </div>
 
@@ -159,7 +177,7 @@ const AnalyticsCharts = () => {
           Mesure le coût moyen pour obtenir une acquisition (ex: lead, vente, inscription). Indicateur clé de l&apos;efficacité de la conversion.
         </p>
         <div className="formula">
-          {`$$ \\text{CPA} = \\frac{250\\euro}{\\text{10 Acquisitions}} = 25\\euro $$`}
+          {`$$ \\text{CPA} = \\frac{250€}{\\text{10 Acquisitions}} = 25€ $$`}
         </div>
       </div>
 
@@ -172,7 +190,7 @@ const AnalyticsCharts = () => {
           Évalue l&apos;efficacité financière des campagnes en comparant le gain à l&apos;investissement. Le KPI ultime pour mesurer la valeur.
         </p>
         <div className="formula">
-          {`$$ \\text{ROI} = \\frac{(250\\euro - 100\\euro)}{100\\euro} \\times 100 = 150\\% $$`}
+          {`$$ \\text{ROI} = \\frac{(250€ - 100€)}{100€} \\times 100 = 150\\% $$`}
         </div>
       </div>
     </div>
