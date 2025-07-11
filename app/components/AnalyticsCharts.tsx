@@ -133,7 +133,7 @@ const AnalyticsCharts = () => {
           Mesure le coût pour 1000 impressions de vos annonces. Essentiel pour évaluer l&apos;efficacité des campagnes de notoriété.
         </p>
         <div className="formula">
-          {`$$ \\text{CPM} = \\frac{\\text{Coût Total Campagne}}{\\text{Nombre d'Impressions}} \\times 1000 $$`}
+          {`$$ \\text{CPM} = \\frac{800\\euro}{\\text{100000 Impressions}} \\times 1000 = 8\\euro $$`}
         </div>
       </div>
 
@@ -146,7 +146,7 @@ const AnalyticsCharts = () => {
           Indique le coût moyen pour chaque clic sur vos annonces. Crucial pour les campagnes axées sur le trafic.
         </p>
         <div className="formula">
-          {`$$ \\text{CPC} = \\frac{\\text{Coût Total Clics}}{\\text{Nombre de Clics}} $$`}
+          {`$$ \\text{CPC} = \\frac{80\\euro}{\\text{100 Clics}} = 0.80\\euro $$`}
         </div>
       </div>
 
@@ -159,7 +159,7 @@ const AnalyticsCharts = () => {
           Mesure le coût moyen pour obtenir une acquisition (ex: lead, vente, inscription). Indicateur clé de l&apos;efficacité de la conversion.
         </p>
         <div className="formula">
-          {`$$ \\text{CPA} = \\frac{\\text{Coût Total Campagne}}{\\text{Nombre d'Acquisitions}} $$`}
+          {`$$ \\text{CPA} = \\frac{250\\euro}{\\text{10 Acquisitions}} = 25\\euro $$`}
         </div>
       </div>
 
@@ -172,7 +172,7 @@ const AnalyticsCharts = () => {
           Évalue l&apos;efficacité financière des campagnes en comparant le gain à l&apos;investissement. Le KPI ultime pour mesurer la valeur.
         </p>
         <div className="formula">
-          {`$$ \\text{ROI} = \\frac{(\\text{Revenu Généré} - \\text{Coût de l'Investissement})}{\\text{Coût de l'Investissement}} \\times 100 $$`}
+          {`$$ \\text{ROI} = \\frac{(250\\euro - 100\\euro)}{100\\euro} \\times 100 = 150\\% $$`}
         </div>
       </div>
     </div>
