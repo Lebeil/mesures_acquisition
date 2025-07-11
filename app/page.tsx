@@ -254,7 +254,7 @@ export default function Home() {
         <section className={`content-section ${activeSection === 'performance' ? 'active' : ''}`}>
           <h2>Dashboard de Performance (KPI)</h2>
           <p className="section-description max-w-3xl">
-            Pour piloter sa croissance, Agence Gust doit s&apos;appuyer sur des données fiables. Nous avons identifié quatre indicateurs clés de performance (KPI) essentiels. Ce tableau de bord interactif simule le suivi de ces métriques, qui sont vitales pour mesurer l&apos;efficacité des ventes, l&apos;impact des campagnes, la fidélité des clients et la santé financière de l&apos;agence.
+            Pour piloter sa croissance, Agence Gust doit s&apos;appuyer sur des données fiables. Nous avons sélectionné quatre indicateurs clés de performance (KPI) essentiels pour mesurer l&apos;efficacité des campagnes publicitaires et la rentabilité des projets.
           </p>
           <AnalyticsCharts />
         </section>

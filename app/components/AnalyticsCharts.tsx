@@ -14,7 +14,7 @@ import {
   Legend,
   Filler,
 } from 'chart.js';
-import { Bar, Doughnut, Line } from 'react-chartjs-2';
+import { Bar, Line } from 'react-chartjs-2';
 
 // Interface pour MathJax
 interface MathJaxType {
@@ -77,38 +77,22 @@ const AnalyticsCharts = () => {
     }
   };
 
-  const acquisitionData = {
+  const cpmData = {
     labels: ['T1 2024', 'T2 2024', 'T3 2024', 'T4 2024 (P)'],
     datasets: [{
-      label: 'Nouveaux Clients',
-      data: [5, 8, 12, 10],
+      label: 'CPM (€)',
+      data: [8, 7.5, 7, 6.8],
       backgroundColor: 'rgba(245, 158, 11, 0.6)',
       borderColor: 'rgba(245, 158, 11, 1)',
       borderWidth: 1
     }]
   };
 
-  const engagementData = {
-    labels: ['J\'aime', 'Commentaires', 'Partages', 'Sauvegardes'],
+  const cpcData = {
+    labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
     datasets: [{
-      label: 'Répartition Engagement',
-      data: [65, 15, 10, 10],
-      backgroundColor: [
-        'rgba(59, 130, 246, 0.7)',
-        'rgba(16, 185, 129, 0.7)',
-        'rgba(245, 158, 11, 0.7)',
-        'rgba(107, 114, 128, 0.7)'
-      ],
-      borderColor: '#ffffff',
-      borderWidth: 2
-    }]
-  };
-
-  const retentionData = {
-    labels: ['2023', 'T1 2024', 'T2 2024', 'T3 2024'],
-    datasets: [{
-      label: 'Taux de Rétention (%)',
-      data: [60, 65, 75, 72],
+      label: 'CPC (€)',
+      data: [0.8, 0.75, 0.7, 0.72, 0.68, 0.65],
       fill: true,
       backgroundColor: 'rgba(59, 130, 246, 0.1)',
       borderColor: 'rgba(59, 130, 246, 1)',
@@ -116,96 +100,79 @@ const AnalyticsCharts = () => {
     }]
   };
 
-  const profitabilityData = {
-    labels: ['Influence', 'Célébrité', 'Production'],
-    datasets: [
-      {
-        label: 'Revenu (€k)',
-        data: [50, 120, 75],
-        backgroundColor: 'rgba(16, 185, 129, 0.6)',
-        borderColor: 'rgba(16, 185, 129, 1)',
-        borderWidth: 1
-      },
-      {
-        label: 'Coûts (€k)',
-        data: [35, 95, 45],
-        backgroundColor: 'rgba(239, 68, 68, 0.6)',
-        borderColor: 'rgba(239, 68, 68, 1)',
-        borderWidth: 1
-      }
-    ]
+  const cpaData = {
+    labels: ['Campagne A', 'Campagne B', 'Campagne C'],
+    datasets: [{
+      label: 'CPA (€)',
+      data: [25, 32, 28],
+      backgroundColor: 'rgba(16, 185, 129, 0.6)',
+      borderColor: 'rgba(16, 185, 129, 1)',
+      borderWidth: 1
+    }]
   };
 
-  const doughnutOptions = {
-    ...chartOptions,
-    scales: {
-      y: { display: false },
-      x: { display: false }
-    }
-  };
-
-  const retentionOptions = {
-    ...chartOptions,
-    scales: {
-      ...chartOptions.scales,
-      y: {
-        ...chartOptions.scales.y,
-        suggestedMax: 100
-      }
-    }
+  const roiData = {
+    labels: ['Projet Influence', 'Projet Célébrité', 'Projet Production'],
+    datasets: [{
+      label: 'ROI (%)',
+      data: [150, 220, 180],
+      backgroundColor: 'rgba(245, 158, 11, 0.6)',
+      borderColor: 'rgba(245, 158, 11, 1)',
+      borderWidth: 1
+    }]
   };
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div className="kpi-card">
-        <h3>1. Taux d&apos;Acquisition Clients</h3>
+        <h3>1. CPM (Coût Pour Mille Impressions)</h3>
         <div className="chart-container">
-          <Bar data={acquisitionData} options={chartOptions} />
+          <Bar data={cpmData} options={chartOptions} />
         </div>
         <p className="description">
-          Mesure la capacité à attirer de nouveaux clients, essentielle pour un modèle basé sur le projet.
+          Mesure le coût pour 1000 impressions de vos annonces. Essentiel pour évaluer l&apos;efficacité des campagnes de notoriété.
         </p>
         <div className="formula">
-          {`$$\\text{Formule} : \\frac{\\text{Nouveaux Clients}}{\\text{Prospects Engagés}} \\times 100$$`}
+          {`$$ \\text{CPM} = \\frac{\\text{Coût Total Campagne}}{\\text{Nombre d'Impressions}} \\times 1000 $$`}
         </div>
       </div>
 
       <div className="kpi-card">
-        <h3>2. Taux d&apos;Engagement Campagnes</h3>
+        <h3>2. CPC (Coût Par Clic)</h3>
         <div className="chart-container">
-          <Doughnut data={engagementData} options={doughnutOptions} />
+          <Line data={cpcData} options={chartOptions} />
         </div>
         <p className="description">
-          Valide la promesse des &quot;Stop-scrollers&quot; en mesurant l&apos;interaction du public.
+          Indique le coût moyen pour chaque clic sur vos annonces. Crucial pour les campagnes axées sur le trafic.
         </p>
         <div className="formula">
-          {`$$\\text{Formule} : \\frac{\\text{Engagements Totaux}}{\\text{Portée ou Impressions Totales}} \\times 100$$`}
+          {`$$ \\text{CPC} = \\frac{\\text{Coût Total Clics}}{\\text{Nombre de Clics}} $$`}
         </div>
       </div>
 
       <div className="kpi-card">
-        <h3>3. Taux de Rétention Client</h3>
+        <h3>3. CPA (Coût Par Acquisition)</h3>
         <div className="chart-container">
-          <Line data={retentionData} options={retentionOptions} />
+          <Bar data={cpaData} options={chartOptions} />
         </div>
         <p className="description">
-          Indique la satisfaction client et la stabilité des revenus à long terme.
+          Mesure le coût moyen pour obtenir une acquisition (ex: lead, vente, inscription). Indicateur clé de l&apos;efficacité de la conversion.
         </p>
         <div className="formula">
-          {`$$\\text{Formule} : \\frac{\\text{Clients Fin Période} - \\text{Nouveaux Clients}}{\\text{Clients Début Période}} \\times 100$$`}
+          {`$$ \\text{CPA} = \\frac{\\text{Coût Total Campagne}}{\\text{Nombre d'Acquisitions}} $$`}
         </div>
       </div>
 
       <div className="kpi-card">
-        <h3>4. Rentabilité par Projet</h3>
+        <h3>4. ROI (Retour sur Investissement)</h3>
         <div className="chart-container">
-          <Bar data={profitabilityData} options={chartOptions} />
+          <Bar data={roiData} options={chartOptions} />
         </div>
         <p className="description">
-          Crucial pour la santé financière, identifie les missions les plus lucratives.
+          Évalue l&apos;efficacité financière des campagnes en comparant le gain à l&apos;investissement. Le KPI ultime pour mesurer la valeur.
         </p>
         <div className="formula">
-          {`$$\\text{Formule} : \\frac{\\text{Revenu Projet} - \\text{Coûts Totaux Projet}}{\\text{Revenu Projet}} \\times 100$$`}
+          {`$$ \\text{ROI} = \\frac{(\\text{Revenu Généré} - \\text{Coût de l'Investissement})}{\\text{Coût de l'Investissement}} \\times 100 $$`}
         </div>
       </div>
     </div>
